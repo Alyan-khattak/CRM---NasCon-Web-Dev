@@ -35,7 +35,7 @@ export default function TrustSection() {
           </div>
           <div className={styles.sectionContent}>
             <SplitText
-              text="It Actually Understands What You Need."
+              text="The full picture, finally connected."
               className={styles.title}
               delay={50}
               duration={0.6}
@@ -48,7 +48,7 @@ export default function TrustSection() {
               textAlign="left"
             />
             <SplitText
-              text="You've probably dealt with clunky chatbots that break the second someone asks something unexpected. This isn't that. Your Olema agent understands what's actually being asked, checks your own data, and makes the right call — just like your best employee would."
+              text="Leads, conversations, appointments, payments, and team activity are part of the same customer story. Financify helps your team move from scattered updates to a clearer view of what happens next."
               className={styles.description}
               delay={20}
               duration={0.4}
@@ -70,6 +70,7 @@ export default function TrustSection() {
               src="/images/bg2.jpg"
               alt="Background 2"
               fill
+              sizes="(max-width: 768px) 100vw, 40vw"
               className={styles.backgroundImage}
               priority
             />
@@ -77,7 +78,7 @@ export default function TrustSection() {
           </div>
           <div className={styles.card2Inner}>
             <SplitText
-              text="You're Always In Control."
+              text="Human ownership. Every step."
               className={styles.titleSmall}
               delay={50}
               duration={0.6}
@@ -90,7 +91,7 @@ export default function TrustSection() {
               textAlign="left"
             />
             <SplitText
-              text="Your agent knows exactly where its job ends. The moment something needs a human touch, it hands the conversation straight to your team — with full context, so nobody has to repeat themselves."
+              text="Conversational AI can support interactions and offer recommendations. A designated human remains accountable for each lead and customer relationship — with full context available at every step."
               className={styles.descriptionSmall}
               delay={20}
               duration={0.4}

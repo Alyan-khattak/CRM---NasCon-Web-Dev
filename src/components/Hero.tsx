@@ -7,25 +7,25 @@ export default function Hero() {
       <div className={styles.backgroundEffects} />
       
       <div className={styles.container}>
-        <div className={styles.eyebrow}>AGENTIC AI • DONE FOR YOU</div>
+        <div className={styles.eyebrow}>ONE WORKSPACE. EVERY CUSTOMER.</div>
         
         <h1 className={styles.title}>
-          Stop Firefighting.<br />
-          Start Scaling.
+          Every lead has an owner.<br />
+          Every detail has a place.
         </h1>
         
         <div className={styles.subtitleWrapper}>
           <p className={styles.subtitle}>
-            Built for growing teams where leads, tickets, or orders are moving faster than your systems can keep up.
+            Manage leads, customer conversations, sales pipelines, payments, and appointments in one connected workspace — with clear ownership and fewer things slipping through the cracks.
           </p>
         </div>
         
         <div className={styles.actions}>
-          <Link href="#audit" className={styles.primaryBtn}>
-            Show Me Where I&apos;m Losing Money — Free
+          <Link href="#cta" className={styles.primaryBtn}>
+            See Financify in Action
           </Link>
-          <Link href="#demo" className={styles.secondaryBtn}>
-            See What This Looks Like For You <span className={styles.arrow}>&rarr;</span>
+          <Link href="#agents" className={styles.secondaryBtn}>
+            Explore the Platform <span className={styles.arrow}>&rarr;</span>
           </Link>
         </div>
       </div>
