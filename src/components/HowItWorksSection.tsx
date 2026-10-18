@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import styles from "./HowItWorksSection.module.css";
 import { motion } from "motion/react";
@@ -6,10 +6,10 @@ import { motion } from "motion/react";
 const steps = [
   {
     id: "step-1",
-    tab: "WEEK 1",
+    tab: "STEP 1",
     num: "1",
-    title: "Discover",
-    description: "Workshops, market and user research, technical scoping — ending in a costed roadmap.",
+    title: "Capture",
+    description: "Bring leads in through the supported intake channels and keep the source attached to the record.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
         <circle cx="11" cy="11" r="7" />
@@ -21,15 +21,16 @@ const steps = [
   },
   {
     id: "step-2",
-    tab: "WEEK 2–4",
+    tab: "STEP 2",
     num: "2",
-    title: "Design",
-    description: "Flows, prototypes and a reusable design system — tested with real users before build.",
+    title: "Assign",
+    description: "Use configured assignment rules and employee availability to establish a clear human owner, with acknowledgement windows and escalation when needed.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
-        <rect x="4" y="4" width="16" height="16" rx="3" />
-        <path d="M4 14h16" />
-        <path d="M10 14v6" />
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
       </svg>
     ),
     rowClass: styles.zrow2,
@@ -37,32 +38,17 @@ const steps = [
   },
   {
     id: "step-3",
-    tab: "WEEK 5–11",
+    tab: "STEP 3",
     num: "3",
-    title: "Build",
-    description: "Weekly releases with demos every Friday. Multi-tenant architecture, billing, admin.",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
-        <path d="m8 8-4 4 4 4" />
-        <path d="m16 8 4 4-4 4" />
-      </svg>
-    ),
-    rowClass: styles.zrow3,
-    isAccent: false,
-  },
-  {
-    id: "step-4",
-    tab: "ONGOING",
-    num: "4",
-    title: "Launch & grow",
-    description: "CI/CD, monitoring, SEO and growth programs tied to your revenue numbers.",
+    title: "Follow Through",
+    description: "Keep conversations, customer activity, appointments, and payment status connected so the next action is easier to understand.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
         <path d="M3 17l6-6 4 4 8-8" />
         <path d="M14 7h7v7" />
       </svg>
     ),
-    rowClass: styles.zrow4,
+    rowClass: styles.zrow3,
     isAccent: true,
   },
 ];
@@ -78,7 +64,7 @@ export default function HowItWorksSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          • How we work
+          â€¢ HOW FINANCIFY WORKS
         </motion.div>
         
         <motion.h2 
@@ -88,7 +74,7 @@ export default function HowItWorksSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          From brief <em>to launch.</em>
+          From first enquiry <em>to clear next step.</em>
         </motion.h2>
 
         <div className={styles.zig}>
@@ -116,7 +102,7 @@ export default function HowItWorksSection() {
                 <div className={styles.zbody}>
                   <div className={styles.zhd}>
                     <span className={styles.zico}>{step.icon}</span>
-                    <b>{step.num} · {step.title}</b>
+                    <b>{step.num} Â· {step.title}</b>
                   </div>
                   <p>{step.description}</p>
                 </div>
@@ -128,3 +114,4 @@ export default function HowItWorksSection() {
     </section>
   );
 }
+

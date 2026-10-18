@@ -15,7 +15,7 @@ export default function ProofSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            Don&apos;t take our word for it. <em>Run it.</em>
+            Don&apos;t just imagine the workflow. <em>See it in action.</em>
           </motion.h2>
         </div>
 
@@ -27,7 +27,7 @@ export default function ProofSection() {
           transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
         >
           <p className={styles.subheading}>
-            We&apos;re not going to point you to a wall of logos and ask you to trust us. Instead, we&apos;ll put your agent to work in your business, <span className={styles.highlight}>for free, for 7 full days</span> — and let the results speak. You&apos;ll see exactly how many leads it caught, how fast it responded, and how much time it gave back, before you spend a single rupee.
+            Walk through the way Financify connects leads, customer conversations, follow-ups, and operational visibility. <span className={styles.highlight}>See how the workflow fits your team&apos;s day-to-day work</span> before making assumptions about what you need.
           </p>
         </motion.div>
       </div>

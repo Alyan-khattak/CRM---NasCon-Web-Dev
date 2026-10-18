@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef } from 'react';
 import styles from './EnterpriseSection.module.css';
@@ -47,7 +47,7 @@ function StackedCardItem({ feature, index, total }: { feature: FeatureItem; inde
             {index === 0 && (
               <div className={styles.integrationVisual}>
                 <div className={styles.centralHub}>
-                  <div className={styles.hubCore}>Olema AI</div>
+                  <div className={styles.hubCore}>Financify</div>
                   <div className={styles.pulseRing}></div>
                   <div className={styles.pulseRing2}></div>
                 </div>
@@ -61,7 +61,7 @@ function StackedCardItem({ feature, index, total }: { feature: FeatureItem; inde
                       <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                     </svg>
                   </div>
-                  <span>CRM System</span>
+                  <span>CRM</span>
                 </div>
 
                 <div className={`${styles.nodeItem} ${styles.nodeErp}`}>
@@ -72,7 +72,7 @@ function StackedCardItem({ feature, index, total }: { feature: FeatureItem; inde
                       <line x1="12" y1="17" x2="12" y2="21"></line>
                     </svg>
                   </div>
-                  <span>ERP / Ops</span>
+                  <span>Payments</span>
                 </div>
 
                 <div className={`${styles.nodeItem} ${styles.nodeComms}`}>
@@ -81,7 +81,7 @@ function StackedCardItem({ feature, index, total }: { feature: FeatureItem; inde
                       <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
                     </svg>
                   </div>
-                  <span>WhatsApp & Comms</span>
+                  <span>Messaging</span>
                 </div>
 
                 <div className={`${styles.nodeItem} ${styles.nodeDb}`}>
@@ -94,7 +94,7 @@ function StackedCardItem({ feature, index, total }: { feature: FeatureItem; inde
                       <path d="M21 5v14"></path>
                     </svg>
                   </div>
-                  <span>Database</span>
+                  <span>Calendar</span>
                 </div>
               </div>
             )}
@@ -103,20 +103,20 @@ function StackedCardItem({ feature, index, total }: { feature: FeatureItem; inde
               <div className={styles.analyticsVisual}>
                 <div className={styles.metricsGrid}>
                   <div className={styles.metricCard}>
-                    <span className={styles.metricValue}>1,420+</span>
-                    <span className={styles.metricLabel}>Leads Qualified</span>
+                    <span className={styles.metricValue}>On Track</span>
+                    <span className={styles.metricLabel}>New Leads</span>
                   </div>
                   <div className={styles.metricCard}>
-                    <span className={styles.metricValue}>99.4%</span>
-                    <span className={styles.metricLabel}>Tickets Closed</span>
+                    <span className={styles.metricValue}>Needs Attention</span>
+                    <span className={styles.metricLabel}>Open Pipeline</span>
                   </div>
                   <div className={styles.metricCard}>
-                    <span className={styles.metricValue}>3,850</span>
-                    <span className={styles.metricLabel}>Tasks Done</span>
+                    <span className={styles.metricValue}>Pending</span>
+                    <span className={styles.metricLabel}>Response Time</span>
                   </div>
                   <div className={`${styles.metricCard} ${styles.highlightMetric}`}>
-                    <span className={styles.metricValue}>+340%</span>
-                    <span className={styles.metricLabel}>Verified ROI</span>
+                    <span className={styles.metricValue}>Active</span>
+                    <span className={styles.metricLabel}>Recovery Queue</span>
                   </div>
                 </div>
 
@@ -130,7 +130,7 @@ function StackedCardItem({ feature, index, total }: { feature: FeatureItem; inde
                   </div>
                   <div className={styles.liveIndicator}>
                     <span className={styles.liveDot}></span>
-                    <span>Live ROI Dashboard</span>
+                    <span>Operational Dashboard</span>
                   </div>
                 </div>
               </div>
@@ -152,15 +152,15 @@ function StackedCardItem({ feature, index, total }: { feature: FeatureItem; inde
                 <div className={styles.securityBadges}>
                   <div className={styles.securityBadge}>
                     <span className={styles.secDot}></span>
-                    <span>256-Bit End-to-End Encryption</span>
+                    <span>Workspace Isolation</span>
                   </div>
                   <div className={styles.securityBadge}>
                     <span className={styles.secDot}></span>
-                    <span>Zero External Model Training</span>
+                    <span>Role-Based Permissions</span>
                   </div>
                   <div className={styles.securityBadge}>
                     <span className={styles.secDot}></span>
-                    <span>Role-Based Access Control</span>
+                    <span>Traceable Activity</span>
                   </div>
                 </div>
               </div>
@@ -175,22 +175,22 @@ function StackedCardItem({ feature, index, total }: { feature: FeatureItem; inde
 export default function EnterpriseSection() {
   const features: FeatureItem[] = [
     {
-      badge: "SEAMLESS INTEGRATION",
-      title: "Keep Everything You Already Use.",
-      description: "You don't have to rip out your CRM, your ERP, or any tool your team already knows. Your agent simply plugs in and starts working alongside what you've already got.",
-      youGet: "All the upside, none of the painful switch."
+      badge: "CONNECTED RECORDS",
+      title: "Keep customer work connected.",
+      description: "Bring lead activity, conversations, opportunities, appointments, and payment status into a shared customer context.",
+      youGet: "Your team gets the context it needs before taking the next step."
     },
     {
-      badge: "REAL-TIME ANALYTICS",
-      title: "See Exactly What You're Getting.",
-      description: "You'll never wonder if this is working. Your own dashboard shows you, in real time, every lead qualified, every ticket closed, every task done.",
-      youGet: "Full visibility into your ROI, without doing any of the manual tracking yourself."
+      badge: "OPERATIONAL VISIBILITY",
+      title: "See what needs attention.",
+      description: "Track new leads, response times, overdue work, escalations, employee availability, upcoming appointments, and collected payments from an operational dashboard.",
+      youGet: "Make the next action easier to identify."
     },
     {
-      badge: "IRONCLAD PROTECTION",
-      title: "Your Data Stays Yours. Full Stop.",
-      description: "Everything is encrypted, access-controlled, and built to meet enterprise standards. Your data is never used to train anything outside your business. Ever.",
-      youGet: "The freedom to scale fast without ever worrying about your reputation."
+      badge: "PERMISSIONS & WORKSPACE",
+      title: "Your workspace. Your permissions.",
+      description: "Keep company workspaces separate and control access through server-enforced permissions. Important actions are recorded so the team can trace what changed and when.",
+      youGet: "Role-based access and traceable activity â€” no shared chaos."
     }
   ];
 
@@ -204,9 +204,9 @@ export default function EnterpriseSection() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <span className={styles.eyebrow}>• ENTERPRISE GRADE</span>
+          <span className={styles.eyebrow}>â€¢ CONNECTED OPERATIONS</span>
           <h2 className={styles.mainTitle}>
-            Enterprise grade. <em>Zero friction.</em>
+            Your tools connected. <em>Your work in context.</em>
           </h2>
         </motion.div>
         
@@ -219,3 +219,4 @@ export default function EnterpriseSection() {
     </section>
   );
 }
+
