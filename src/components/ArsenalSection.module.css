@@ -1,0 +1,1232 @@
+.arsenalSection {
+  padding: 80px 1rem;
+  background-color: transparent;
+  color: var(--foreground);
+  position: relative;
+  overflow: hidden; /* keep gradient inside */
+}
+
+.backgroundEffects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #ffffff;
+  background-image: 
+    linear-gradient(to right, #e8e8e8 1px, transparent 1px),
+    linear-gradient(to bottom, #e8e8e8 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 1;
+  overflow: hidden;
+}
+
+.backgroundEffects::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(to top, transparent, var(--background, #ffffff));
+  pointer-events: none;
+}
+
+.backgroundEffects::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--background, #ffffff));
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .arsenalSection {
+    padding: 120px 2rem;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  max-width: 1000px;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .header {
+    margin-bottom: 5rem;
+  }
+}
+
+.eyebrow {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--charcoal-2, #65717c);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--foreground, #181818);
+  margin: 0;
+}
+
+.title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--charcoal-2, #65717c);
+}
+
+.cardsDescription {
+  grid-column: 1 / -1;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--foreground);
+  opacity: 0.7;
+  max-width: 650px;
+  margin: 0 0 0.5rem 0;
+}
+
+/* Layout for Tabs + Content */
+.contentLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 992px) {
+  .contentLayout {
+    grid-template-columns: 320px 1fr;
+    gap: 4rem;
+  }
+}
+
+.tabsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tabsHeader {
+  font-size: 0.85rem;
+  color: var(--foreground);
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.arrowDown {
+  font-size: 1rem;
+}
+
+.tabsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tabBtn {
+  text-align: left;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: var(--glass-bg);
+  color: var(--foreground);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.tabBtn::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 13px;
+  border: 2px solid var(--border-color);
+  filter: blur(1px);
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.tabBtn::after {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  opacity: 0;
+  transition: all 0.2s ease;
+  transform: scale(0.5);
+}
+
+.tabBtn:hover {
+  background: rgba(0,0,0,0.03);
+}
+.tabBtn:hover::before {
+  border-color: rgba(0,0,0,0.15);
+}
+
+.tabBtn:hover::after,
+.activeTab::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.activeTab {
+  background: var(--foreground);
+  color: var(--background);
+  border-color: transparent;
+}
+
+.activeTab::before {
+  border-color: var(--foreground);
+}
+
+.activeTab:hover {
+  background: var(--foreground);
+}
+
+/* Right side content */
+.contentCol {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.showcaseCard {
+  background-color: transparent;
+  background-image: radial-gradient(circle at 100% 100%, transparent 0%, rgba(255, 255, 255, 0.85) 20%, #ffffff 38%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 20px;
+  padding: 2.25rem;
+  box-shadow: 
+    0 15px 35px -10px rgba(0, 0, 0, 0.05),
+    0 0 15px rgba(0, 0, 0, 0.02),
+    inset 0 1px 1px rgba(255, 255, 255, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: fadeIn 0.4s ease-out forwards;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.showcaseCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 25px 50px -15px rgba(0, 0, 0, 0.1),
+    0 0 25px rgba(0, 0, 0, 0.04),
+    inset 0 1px 1px rgba(255, 255, 255, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cardTitle {
+  font-size: clamp(1.5rem, 3vw, 1.85rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0;
+  color: var(--foreground);
+}
+
+.cardIllustration {
+  width: 100%;
+  height: 160px;
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-grow: 1; /* Pushes footer to bottom */
+}
+
+/* CSS Illustration Shapes */
+.cssShapeMain, .cssShapeSecondary, .cssShapeTertiary {
+  position: absolute;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: var(--t-base, translate(-50%, -50%));
+}
+
+.cssShapeMain { transform: var(--t-main, var(--t-base, translate(-50%, -50%))); }
+.cssShapeSecondary { transform: var(--t-sec, var(--t-base, translate(-50%, -50%))); }
+.cssShapeTertiary { transform: var(--t-ter, var(--t-base, translate(-50%, -50%))); }
+
+.showcaseCard:hover .cssShapeMain { transform: var(--t-main-hover, var(--t-main, translate(-50%, -50%) scale(1.1))); }
+.showcaseCard:hover .cssShapeSecondary { transform: var(--t-sec-hover, var(--t-sec, translate(-50%, -50%) scale(1.15))); }
+.showcaseCard:hover .cssShapeTertiary { transform: var(--t-ter-hover, var(--t-ter, translate(-50%, -50%) scale(1.08))); }
+
+/* 1. Support - Chat Animation */
+.chatAnimationContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0 0.5rem;
+  margin-top: -1rem;
+}
+
+.chatBubble {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-end;
+  max-width: 90%;
+  opacity: 0;
+  animation: chatPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.chatText {
+  padding: 0.6rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.chatCustomer {
+  align-self: flex-start;
+  animation-delay: 0.3s;
+}
+
+.chatCustomer .chatText {
+  background: #ffffff;
+  color: #181818;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-bottom-left-radius: 2px;
+}
+
+.chatAi {
+  align-self: flex-end;
+  animation-delay: 1.4s;
+}
+
+.chatAi .chatText {
+  background: #181818;
+  color: #ffffff;
+  border-bottom-right-radius: 2px;
+}
+
+.chatDelay {
+  animation-delay: 2.5s;
+}
+
+@keyframes chatPop {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 2. Leads - Table Animation */
+.leadsTableContainer {
+  width: 100%;
+  height: 140px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  position: relative;
+}
+
+.leadsGridOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(to right, var(--border-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
+  background-size: 33.33% 25%;
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 0;
+  
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-composite: intersect;
+}
+
+.leadsTableHeader {
+  display: flex;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.leadsTableBody {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  position: relative;
+  z-index: 1;
+}
+
+.leadsRow {
+  display: flex;
+  flex: 1;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.leadsCol {
+  flex: 1;
+  font-size: 0.65rem;
+  color: var(--foreground);
+  display: flex;
+  align-items: center;
+  padding: 0 0.8rem;
+  border: none;
+}
+
+.leadsTableHeader .leadsCol {
+  color: #888;
+  font-size: 0.55rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.scoreHigh {
+  color: var(--foreground);
+  font-weight: 600;
+}
+.scoreMed {
+  color: var(--foreground);
+  font-weight: 600;
+}
+.scoreLow {
+  color: #888;
+  font-weight: 600;
+}
+.actionRoute,
+.actionNurture {
+  background: #181818;
+  color: #ffffff;
+  font-size: 0.55rem;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+  display: inline-block;
+  letter-spacing: 0.2px;
+}
+
+.leadsRow1 { 
+  animation: populateRow 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.2s;
+}
+.leadsRow2 { 
+  animation: populateRow 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.4s;
+}
+.leadsRow3 { 
+  animation: populateRow 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.6s;
+}
+
+@keyframes populateRow {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+/* 3. Appointment */
+.apptTimelineContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  margin-top: -1rem;
+}
+
+.apptTimeline {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  position: relative;
+}
+
+.apptTimeCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 120px;
+  color: #888;
+  font-size: 0.6rem;
+  font-weight: 500;
+  text-align: right;
+  padding-top: 5px;
+}
+
+.apptScheduleCol {
+  flex: 1;
+  position: relative;
+  height: 120px;
+  border-left: 1px solid rgba(0,0,0,0.06);
+}
+
+.apptLine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(0,0,0,0.04);
+}
+
+.apptExistingBlock {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  right: 10px;
+  height: 40px;
+  background: rgba(0,0,0,0.04);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.7rem;
+  color: #666;
+  font-weight: 500;
+  border-left: 3px solid rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+}
+
+.apptNewBlock {
+  position: absolute;
+  top: 65px;
+  left: 10px;
+  right: 10px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-left: 3px solid #181818;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.7rem;
+  color: #181818;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  
+  opacity: 0;
+  transform: translateY(-10px) scale(0.95);
+  animation: bookMeeting 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.5s;
+}
+
+.apptBlockInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.apptBlockBadge {
+  background: rgba(0,0,0,0.1);
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 0.6rem;
+}
+
+@keyframes bookMeeting {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 4. Alerts Animation */
+.alertsAnimContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  margin-top: -1rem;
+}
+
+.alertsRadar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+}
+
+.alertsRadarCircle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: 1.5px solid #181818;
+  opacity: 0;
+  animation: radarPulse 3s linear infinite;
+}
+
+.alertsRadarCircle:nth-child(2) {
+  animation-delay: 1.5s;
+}
+
+@keyframes radarPulse {
+  0% { transform: scale(0.2); opacity: 0.8; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.alertToast {
+  position: relative;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  width: 85%;
+  max-width: 240px;
+  z-index: 2;
+  
+  opacity: 0;
+  transform: translateY(15px);
+  animation: alertToastPop 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.6s;
+}
+
+.alertToastHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.alertToastDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #181818;
+  margin-top: 4px;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 0 rgba(24, 24, 24, 0.4);
+  animation: pulseWarning 2s infinite;
+}
+
+.alertToastText {
+  color: #181818;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+@keyframes pulseWarning {
+  0% { box-shadow: 0 0 0 0 rgba(24, 24, 24, 0.4); }
+  70% { box-shadow: 0 0 0 5px rgba(24, 24, 24, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(24, 24, 24, 0); }
+}
+
+@keyframes alertToastPop {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 5. Order */
+.cardIllustration[data-type="order"] { --t-base: translate(-50%, -50%) rotate(45deg); }
+.cardIllustration[data-type="order"] .cssShapeMain {
+  width: 60px; height: 60px; background: rgba(0, 0, 0, 0.08); border: 1px solid #181818; border-radius: 12px; top: 50%; left: 50%; z-index: 3;
+}
+.cardIllustration[data-type="order"] .cssShapeSecondary {
+  width: 60px; height: 60px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; top: 45%; left: 50%; z-index: 2;
+}
+.cardIllustration[data-type="order"] .cssShapeTertiary {
+  width: 60px; height: 60px; background: transparent; border: 1px dashed rgba(255, 255, 255, 0.3); border-radius: 12px; top: 55%; left: 50%; z-index: 1;
+}
+
+/* 6. Healthcare */
+.cardIllustration[data-type="healthcare"] .cssShapeMain {
+  width: 20px; height: 70px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 10px; top: 50%; left: 50%; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+.cardIllustration[data-type="healthcare"] .cssShapeSecondary {
+  width: 70px; height: 20px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 10px; top: 50%; left: 50%; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+.cardIllustration[data-type="healthcare"] .cssShapeTertiary {
+  width: 90px; height: 90px; border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 50%; top: 50%; left: 50%;
+}
+
+/* 7. Custom */
+.cardIllustration[data-type="custom"] .cssShapeMain {
+  width: 50px; height: 50px; background: rgba(0, 0, 0, 0.08); border: 2px solid #181818; border-radius: 12px; top: 40%; left: 40%;
+}
+.cardIllustration[data-type="custom"] .cssShapeSecondary {
+  width: 40px; height: 40px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; top: 60%; left: 60%;
+}
+.cardIllustration[data-type="custom"] .cssShapeTertiary {
+  width: 60px; height: 2px; background: linear-gradient(90deg, #181818, transparent); top: 50%; left: 50%; --t-ter: translate(-50%, -50%) rotate(45deg);
+}
+
+/* 8. Ticket Auto-Triage Animation */
+.premiumTriageContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+.triageQueue {
+  width: 100%;
+  max-width: 250px;
+  position: relative;
+  height: 110px;
+}
+
+.triageScanner {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.15) 95%, #181818 100%);
+  z-index: 10;
+  opacity: 0;
+  animation: triageScanQueue 4s infinite;
+  pointer-events: none;
+}
+
+.triageItemWrapNormal1, .triageItemWrapNormal2, .triageItemWrapEscalating {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.triageItemWrapNormal1 {
+  top: 0;
+  animation: moveDownQueue 4s infinite;
+}
+.triageItemWrapNormal2 {
+  top: 40px;
+  animation: moveDownQueue 4s infinite;
+}
+.triageItemWrapEscalating {
+  top: 80px;
+  animation: jumpQueue 4s infinite;
+  z-index: 5;
+}
+
+.triageItem {
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.triageItemTitle {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.triageItemBadge {
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.05);
+  color: #888;
+}
+
+.triageItemEscalating {
+  animation: triageCardElevate 4s infinite;
+}
+
+.triageItemEscalating .triageItemTitle {
+  animation: triageTitleWhite 4s infinite;
+}
+
+.triageItemBadgeAnim {
+  position: relative;
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  width: 55px;
+  animation: triageBadgeBg 4s infinite;
+}
+
+.badgeTextPending, .badgeTextUrgent {
+  position: absolute;
+  transition: opacity 0.3s;
+}
+
+.badgeTextPending {
+  animation: hidePending 4s infinite;
+}
+
+.badgeTextUrgent {
+  opacity: 0;
+  animation: showUrgent 4s infinite;
+}
+
+@keyframes triageScanQueue {
+  0% { top: -20px; opacity: 0; }
+  10% { opacity: 1; }
+  35% { top: 120px; opacity: 1; }
+  40% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes moveDownQueue {
+  0%, 40% { transform: translateY(0); }
+  45%, 90% { transform: translateY(40px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes jumpQueue {
+  0%, 40% { transform: translateY(0); }
+  45%, 90% { transform: translateY(-80px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes triageCardElevate {
+  0%, 40% {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.3);
+  }
+  45%, 90% {
+    border-color: #181818;
+    background: #181818;
+  }
+  100% {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+
+@keyframes triageTitleWhite {
+  0%, 40% { color: var(--foreground); }
+  45%, 90% { color: #ffffff; }
+  100% { color: var(--foreground); }
+}
+
+@keyframes triageBadgeBg {
+  0%, 40% { background: rgba(0,0,0,0.05); color: #888; }
+  45%, 90% { background: #333333; color: #ffffff; }
+  100% { background: rgba(0,0,0,0.05); color: #888; }
+}
+
+@keyframes hidePending {
+  0%, 40% { opacity: 1; color: #888; }
+  45%, 90% { opacity: 0; color: #888; }
+  100% { opacity: 1; color: #888; }
+}
+
+@keyframes showUrgent {
+  0%, 40% { opacity: 0; color: #ffffff; }
+  45%, 90% { opacity: 1; color: #ffffff; }
+  100% { opacity: 0; color: #ffffff; }
+}
+
+/* 9. Order, Healthcare, Custom Animations */
+.orderAnimContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.orderChat {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.orderBubble {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 12px 12px 12px 2px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.6rem;
+  color: var(--foreground);
+  animation: fadeUpOrderBubble 5s infinite;
+  backdrop-filter: blur(4px);
+}
+.orderSteps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  width: 80%;
+  max-width: 180px;
+}
+.orderStep {
+  background: rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+}
+.orderStep1 {
+  animation: fadeUpStep1 5s infinite;
+}
+.orderStep2 {
+  animation: fadeUpStep2 5s infinite;
+}
+.orderStep3 {
+  animation: fadeUpStep3 5s infinite;
+}
+.orderStepIcon {
+  width: 14px;
+  height: 14px;
+  background: #181818;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.45rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+.orderStepText {
+  font-size: 0.55rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+@keyframes fadeUpStep1 {
+  0%, 10% { opacity: 0; transform: translateY(10px); }
+  15%, 85% { opacity: 1; transform: translateY(0); }
+  90%, 100% { opacity: 0; transform: translateY(-10px); }
+}
+
+@keyframes fadeUpStep2 {
+  0%, 30% { opacity: 0; transform: translateY(10px); }
+  35%, 85% { opacity: 1; transform: translateY(0); }
+  90%, 100% { opacity: 0; transform: translateY(-10px); }
+}
+
+@keyframes fadeUpStep3 {
+  0%, 50% { opacity: 0; transform: translateY(10px); }
+  55%, 85% { opacity: 1; transform: translateY(0); }
+  90%, 100% { opacity: 0; transform: translateY(-10px); }
+}
+
+@keyframes fadeUpOrderBubble {
+  0%, 5% { opacity: 0; transform: translateY(10px); }
+  10%, 85% { opacity: 1; transform: translateY(0); }
+  90%, 100% { opacity: 0; transform: translateY(-10px); }
+}
+
+.healthAnimContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.healthCard {
+  width: 100%;
+  max-width: 180px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 1rem;
+  backdrop-filter: blur(8px);
+  position: relative;
+  overflow: hidden;
+  animation: healthCardGlow 5s infinite;
+}
+.healthHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+.healthAvatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+}
+.healthLines {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.healthLine {
+  height: 4px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 2px;
+}
+.healthLineShort {
+  height: 4px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 2px;
+  width: 60%;
+}
+.healthForms {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 1rem;
+}
+.healthFormLine {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  width: 100%;
+}
+.healthFormLine:nth-child(2) { width: 80%; }
+.healthFormLine:nth-child(3) { width: 40%; }
+
+.healthStatusWrapper {
+  position: relative;
+  height: 24px;
+  width: 100%;
+}
+.healthStatusPending, .healthStatusSynced {
+  position: absolute;
+  top: 0; left: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  width: fit-content;
+}
+.healthStatusPending {
+  background: rgba(0,0,0,0.05);
+  color: #888;
+  animation: hidePendingHealth 5s infinite;
+}
+.healthStatusDotGray {
+  width: 6px; height: 6px; border-radius: 50%; background: #aaa;
+}
+.healthStatusSynced {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--foreground);
+  border: 1px solid #181818;
+  animation: showSyncedHealth 5s infinite;
+  opacity: 0;
+}
+.healthStatusDotGreen {
+  width: 6px; height: 6px; border-radius: 50%; background: #181818;
+  box-shadow: 0 0 6px #181818;
+}
+.healthScanner {
+  position: absolute;
+  top: -20px; left: 0; width: 100%; height: 30px;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.15));
+  animation: healthScan 5s infinite;
+  opacity: 0;
+  z-index: 5;
+}
+
+@keyframes hidePendingHealth {
+  0%, 40% { opacity: 1; }
+  45%, 90% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes showSyncedHealth {
+  0%, 40% { opacity: 0; }
+  45%, 90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes healthScan {
+  0% { top: -20px; opacity: 0; }
+  10% { opacity: 1; }
+  35% { top: 120%; opacity: 1; }
+  40%, 100% { opacity: 0; }
+}
+@keyframes healthCardGlow {
+  0%, 40% { border-color: rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.2); }
+  45%, 90% { border-color: rgba(0, 0, 0, 0.2); background: rgba(0, 0, 0, 0.04); }
+  100% { border-color: rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.2); }
+}
+
+.customAnimContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.customPipeline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+.customBox {
+  background: rgba(255,255,255,0.3);
+  border: 1px solid rgba(255,255,255,0.4);
+  backdrop-filter: blur(4px);
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: #888;
+}
+.customBoxGreen {
+  background: rgba(0, 0, 0, 0.06);
+  border: 1px solid #181818;
+  backdrop-filter: blur(4px);
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--foreground);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  animation: showCustomResult 5s infinite;
+}
+.customLine {
+  width: 15px;
+  height: 2px;
+  background: rgba(255,255,255,0.3);
+}
+.customLineAnim {
+  width: 15px;
+  height: 2px;
+  background: rgba(255,255,255,0.3);
+  position: relative;
+  overflow: hidden;
+}
+.customLineGlow {
+  position: absolute;
+  top: 0; left: 0; height: 100%; width: 10px;
+  background: #181818;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  animation: lineShoot 5s infinite;
+  opacity: 0;
+}
+.customOrbMini {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.customOrbCoreMini {
+  width: 16px;
+  height: 16px;
+  background: #181818;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  animation: orbPulseMini 5s infinite;
+}
+.customOrbRing1Mini {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px dashed #65717c;
+  border-radius: 50%;
+  animation: spinSlow 4s linear infinite;
+}
+
+@keyframes showCustomResult {
+  0%, 40% { opacity: 0; transform: translateX(-10px); }
+  45%, 90% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(-10px); }
+}
+@keyframes lineShoot {
+  0%, 35% { left: -10px; opacity: 0; }
+  36% { left: -10px; opacity: 1; }
+  45% { left: 100%; opacity: 1; }
+  46%, 100% { left: 100%; opacity: 0; }
+}
+@keyframes orbPulseMini {
+  0%, 25% { transform: scale(1); box-shadow: 0 0 10px rgba(16, 119, 215, 0.4); }
+  35% { transform: scale(1.3); box-shadow: 0 0 20px rgba(16, 119, 215, 0.8); }
+  50%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(16, 119, 215, 0.4); }
+}
+@keyframes spinSlow {
+  100% { transform: rotate(360deg); }
+}
+
+.cardFooter {
+  margin-top: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(128, 128, 128, 0.15);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--foreground);
+  position: relative;
+}
+
+.cardFooter strong {
+  font-weight: 600;
+  color: var(--foreground);
+}

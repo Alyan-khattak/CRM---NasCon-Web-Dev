@@ -1,0 +1,138 @@
+.section {
+  padding: 100px 1.5rem;
+  background-color: var(--background, #ffffff);
+  color: var(--foreground, #181818);
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* Header Styles */
+.header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.eyebrow {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--charcoal-2, #65717c);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--foreground, #181818);
+  margin-bottom: 1rem;
+}
+
+.title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--charcoal-2, #65717c);
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--charcoal-2, #65717c);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* Accordion Styles */
+.faqList {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-1, #e4e4e7);
+}
+
+.faqItem {
+  border-bottom: 1px solid var(--border-1, #e4e4e7);
+  transition: background-color 0.2s ease;
+}
+
+.questionButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  gap: 1rem;
+  outline: none;
+  color: var(--foreground, #181818);
+}
+
+.questionButton:hover .questionText {
+  color: var(--charcoal-1, #181818);
+}
+
+.questionText {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--foreground, #181818);
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+
+.iconWrapper {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: var(--accent-sky, #f4f4f5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease;
+}
+
+.iconOpen {
+  transform: rotate(180deg);
+  background-color: var(--foreground, #181818);
+}
+
+.iconOpen .chevronIcon {
+  color: var(--background, #ffffff);
+}
+
+.chevronIcon {
+  width: 15px;
+  height: 15px;
+  color: var(--foreground, #181818);
+  transition: color 0.25s ease;
+}
+
+.answerWrapper {
+  overflow: hidden;
+}
+
+.answerContent {
+  padding: 0 0.5rem 0.875rem 0.5rem;
+}
+
+.answerText {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--charcoal-2, #65717c);
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 60px 1rem;
+  }
+}
+

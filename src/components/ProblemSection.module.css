@@ -1,0 +1,697 @@
+.problemSection {
+  padding: 80px 1rem;
+  background-color: transparent;
+  color: var(--foreground);
+}
+
+@media (min-width: 768px) {
+  .problemSection {
+    padding: 120px 2rem;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  max-width: 1000px;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .header {
+    margin-bottom: 5rem;
+  }
+}
+
+.eyebrow {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--charcoal-2, #65717c);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--foreground, #181818);
+  margin: 0;
+}
+
+.title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--charcoal-2, #65717c);
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--foreground);
+  opacity: 0.7;
+  max-width: 650px;
+  margin: 0;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 
+    0 10px 30px -10px rgba(0, 0, 0, 0.05),
+    0 4px 6px -2px rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 20px 40px -10px rgba(0, 0, 0, 0.08),
+    0 8px 12px -4px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.cardVisual {
+  height: 240px;
+  position: relative;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cardVisual::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.3), transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  -webkit-mask-image: linear-gradient(to top, black, transparent);
+  mask-image: linear-gradient(to top, black, transparent);
+  pointer-events: none;
+  z-index: 20;
+}
+
+.cardVisualInbox {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.cardVisualAdmin {
+  gap: 1.5rem;
+}
+
+.cardVisualErrors {
+  gap: 1rem;
+}
+
+.cardNumber {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: var(--background);
+  color: var(--foreground);
+  z-index: 10;
+}
+
+.cardNumberStatic {
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.cardContent {
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+  color: var(--foreground);
+}
+
+.cardText {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  opacity: 0.6;
+  margin: 0;
+  color: var(--foreground);
+}
+
+/* Card 1 Visuals - Inbox */
+.unreadBadgeFixed {
+  background: #ff4d4d;
+  color: white;
+  padding: 0.1rem 0.4rem;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  display: inline-block;
+  min-width: 28px;
+  text-align: center;
+}
+
+.inboxHeader {
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 30;
+}
+
+.inboxHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.clockIcon {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid var(--foreground);
+  opacity: 0.6;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.clockHand {
+  width: 1.5px;
+  height: 5px;
+  background: var(--foreground);
+  position: absolute;
+  top: 1.5px;
+  transform-origin: bottom center;
+  animation: clockSpin 4s linear infinite;
+}
+
+@keyframes clockSpin {
+  100% { transform: rotate(360deg); }
+}
+
+.unreadBadge {
+  background: #ff4d4d;
+  color: white;
+  padding: 0.1rem 0.4rem;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  display: inline-block;
+  min-width: 28px;
+  text-align: center;
+}
+
+.unreadBadge::after {
+  content: "0";
+  animation: countUp 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes countUp {
+  0% { content: "0"; }
+  10% { content: "14"; }
+  20% { content: "27"; }
+  30% { content: "45"; }
+  40% { content: "63"; }
+  50% { content: "78"; }
+  60% { content: "89"; }
+  70% { content: "95"; }
+  80% { content: "98"; }
+  90% { content: "99"; }
+  100% { content: "99+"; }
+}
+
+.msgList {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  gap: 0.5rem;
+}
+
+.msgCard {
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7rem;
+}
+
+.msgDecaying1 {
+  animation: decayRow1 4s infinite;
+}
+
+.msgDecaying2 {
+  animation: decayRow2 4s infinite;
+}
+
+@keyframes decayRow1 {
+  0%, 10% {
+    background: var(--background);
+    color: var(--foreground);
+    text-decoration: none;
+    opacity: 1;
+  }
+  20%, 90% {
+    background: rgba(0, 0, 0, 0.02);
+    color: #999;
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+  100% {
+    background: var(--background);
+    color: var(--foreground);
+    text-decoration: none;
+    opacity: 1;
+  }
+}
+
+@keyframes decayRow2 {
+  0%, 35% {
+    background: var(--background);
+    color: var(--foreground);
+    text-decoration: none;
+    opacity: 1;
+  }
+  45%, 90% {
+    background: rgba(0, 0, 0, 0.02);
+    color: #999;
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+  100% {
+    background: var(--background);
+    color: var(--foreground);
+    text-decoration: none;
+    opacity: 1;
+  }
+}
+
+.msgFresh {
+  border-color: #ff4d4d;
+  position: relative;
+  background: var(--background);
+  z-index: 1;
+  animation: pulseRedBorder 2s ease-in-out infinite;
+}
+
+@keyframes pulseRedBorder {
+  0%, 100% {
+    transform: scale(1);
+    border-color: rgba(255, 77, 77, 0.5);
+  }
+  50% {
+    transform: scale(1.02);
+    border-color: rgba(255, 77, 77, 1);
+    box-shadow: 0 0 8px rgba(255, 77, 77, 0.3);
+  }
+}
+
+.msgTitle {
+  font-weight: 500;
+}
+
+.msgTime {
+  font-size: 0.6rem;
+  color: #ff4d4d;
+}
+
+.msgFresh .msgTime {
+  color: #ff4d4d;
+  font-weight: 600;
+}
+
+.msgTyping {
+  position: absolute;
+  bottom: -10px;
+  right: -5px;
+  background: var(--foreground);
+  color: var(--background);
+  font-size: 0.6rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  z-index: -1;
+  opacity: 0;
+  animation: slideTagUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.2s forwards;
+}
+
+@keyframes slideTagUp {
+  0% { transform: translateY(15px); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Card 2 Visuals - Admin */
+
+.cardVisualAdmin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.windowApp {
+  width: 130px;
+  background: var(--background);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+}
+
+.windowLeft {
+  top: 15%;
+  left: 10%;
+  z-index: 1;
+}
+
+.windowRight {
+  bottom: 15%;
+  right: 10%;
+  z-index: 2;
+}
+
+.winHeader {
+  display: flex;
+  align-items: center;
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(128, 128, 128, 0.02);
+  border-radius: 6px 6px 0 0;
+}
+
+.winDots {
+  display: flex;
+  gap: 3px;
+  margin-right: auto;
+}
+
+.winDots div {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.dotRed { background: #ff5f56; }
+.dotYellow { background: #ffbd2e; }
+.dotGreen { background: #27c93f; }
+
+.winTitle {
+  font-size: 0.55rem;
+  font-weight: 600;
+  color: #888;
+  margin: 0 auto;
+  padding-right: 15px;
+}
+
+.winBody {
+  padding: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.winSkeleton {
+  height: 12px;
+  background: rgba(128, 128, 128, 0.1);
+  border-radius: 4px;
+  width: 100%;
+}
+
+.winSkeletonHighlight {
+  animation: highlightRowA 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.winSkeletonPaste {
+  animation: pasteRowB 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cursorArrowSVG {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  width: 24px;
+  height: 24px;
+  animation: cursorDragDrop 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  transform-origin: 28% 18%;
+}
+
+.flyingData {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 12px;
+  background: var(--foreground);
+  border-radius: 4px;
+  z-index: 9;
+  opacity: 0;
+  animation: flyingDataAnim 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+@keyframes cursorDragDrop {
+  0% { transform: translate(50px, 80px); }
+  15% { transform: translate(-90px, -50px); }
+  20% { transform: translate(-90px, -50px) scale(0.8); }
+  25% { transform: translate(-90px, -50px) scale(0.8); }
+  50% { transform: translate(70px, 30px) scale(0.8); }
+  55% { transform: translate(70px, 30px) scale(1); }
+  100% { transform: translate(50px, 80px); }
+}
+
+@keyframes highlightRowA {
+  0%, 15% { background: rgba(128, 128, 128, 0.1); }
+  20%, 50% { background: var(--foreground); }
+  55%, 100% { background: rgba(128, 128, 128, 0.1); }
+}
+
+@keyframes pasteRowB {
+  0%, 50% { background: rgba(128, 128, 128, 0.1); }
+  55%, 100% { background: var(--foreground); }
+}
+
+@keyframes flyingDataAnim {
+  0%, 20% { opacity: 0; transform: translate(-90px, -50px) scale(0.9); }
+  25% { opacity: 0.8; transform: translate(-90px, -50px) scale(1); }
+  50% { opacity: 0.8; transform: translate(70px, 30px) scale(1); }
+  55%, 100% { opacity: 0; transform: translate(70px, 30px) scale(0.9); }
+}
+
+/* Card 3 Visuals - API Sync Error */
+
+.cardVisualSync {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.syncBoxLeft, .syncBoxRight {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100px;
+  background: var(--background);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.syncBoxLeft {
+  left: 10%;
+}
+
+.syncBoxRight {
+  right: 10%;
+}
+
+.syncBoxHeader {
+  font-size: 0.55rem;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.syncBoxStatus {
+  font-size: 0.55rem;
+  color: #27c93f;
+  background: rgba(39, 201, 63, 0.1);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.syncBoxStatusContainer {
+  position: relative;
+  width: 55px;
+  height: 18px;
+}
+
+.statusSyncing, .statusFailed {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.55rem; font-weight: 600; border-radius: 4px;
+}
+
+.statusSyncing {
+  color: #27c93f; background: rgba(39, 201, 63, 0.1);
+  animation: syncFade 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.statusFailed {
+  color: #ff5f56; background: rgba(255, 95, 86, 0.1);
+  animation: failFade 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.syncPipeline {
+  position: absolute;
+  top: 50%;
+  left: 32%;
+  right: 32%;
+  height: 2px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  transform: translateY(-50%);
+}
+
+.syncWire {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 2px;
+  background: var(--foreground);
+  transform-origin: left;
+  animation: wireDraw 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.syncWireLeft {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  height: 2px;
+  background: #ff5f56;
+  transform-origin: left;
+  animation: wireSnapLeft 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+}
+
+.syncWireRight {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 2px;
+  background: #ff5f56;
+  transform-origin: right;
+  animation: wireSnapRight 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+}
+
+.syncSpark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  background: #ffbd2e;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: sparkPop 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes syncFade {
+  0%, 10% { opacity: 0; }
+  15%, 45% { opacity: 1; }
+  46%, 100% { opacity: 0; }
+}
+
+@keyframes failFade {
+  0%, 45% { opacity: 0; }
+  46%, 85% { opacity: 1; }
+  90%, 100% { opacity: 0; }
+}
+
+@keyframes wireDraw {
+  0%, 10% { width: 0%; opacity: 1; background: var(--foreground); }
+  25% { width: 100%; opacity: 1; background: var(--foreground); }
+  45% { width: 100%; opacity: 1; background: var(--foreground); }
+  46% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes wireSnapLeft {
+  0%, 45% { opacity: 0; transform: rotate(0deg) scaleX(1); }
+  46% { opacity: 1; transform: rotate(0deg) scaleX(1); }
+  50%, 85% { opacity: 1; transform: rotate(15deg) scaleX(0.85); }
+  90%, 100% { opacity: 0; }
+}
+
+@keyframes wireSnapRight {
+  0%, 45% { opacity: 0; transform: rotate(0deg) scaleX(1); }
+  46% { opacity: 1; transform: rotate(0deg) scaleX(1); }
+  50%, 85% { opacity: 1; transform: rotate(-15deg) scaleX(0.85); }
+  90%, 100% { opacity: 0; }
+}
+
+@keyframes sparkPop {
+  0%, 45% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  46% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; }
+  50% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+  100% { opacity: 0; }
+}

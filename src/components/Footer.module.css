@@ -1,0 +1,148 @@
+.footer {
+  width: 100%;
+  background-color: var(--charcoal-1, #181818);
+  color: #ffffff;
+  padding: 4rem 5vw 2.5rem 5vw;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-sans);
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+/* 2-Column Main Layout: CTA on Left, Olema on Right */
+.mainGrid {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+}
+
+/* Left Column: Big Navigation Links */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.primaryNav {
+  display: flex;
+  flex-direction: column;
+}
+
+.bigCtaLink {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  text-decoration: none;
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.wordWrapper {
+  display: block;
+  overflow: hidden;
+  line-height: 1.05;
+}
+
+.animatedWord {
+  display: block;
+  opacity: 1;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.bigCtaLink:hover .animatedWord {
+  opacity: 1;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Right Column: Olema Title aligned right of CTA */
+.rightCol {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.brandBanner {
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.brandTitle {
+  font-size: clamp(4.5rem, 11vw, 10rem);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  margin: 0;
+  line-height: 0.85;
+  user-select: none;
+  text-align: right;
+}
+
+/* Bottom Navigation Row */
+.bottomRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 2rem;
+}
+
+.bottomRow a {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.bottomRow a:hover {
+  color: #ffffff;
+  letter-spacing: 0.22em;
+}
+
+@media (max-width: 900px) {
+  .mainGrid {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+  .rightCol {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .brandTitle {
+    text-align: left;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer {
+    padding: 3rem 1.5rem 2rem 1.5rem;
+  }
+  .bottomRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+}

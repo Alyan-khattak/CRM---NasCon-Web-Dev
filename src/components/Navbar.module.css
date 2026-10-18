@@ -1,0 +1,232 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 1.5rem 0;
+  background: transparent;
+}
+
+.navbar.scrolled {
+  padding: 1rem 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.navbar.menuOpenNav {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;
+  z-index: 110;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logoText {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--foreground);
+  text-decoration: none;
+}
+
+.navLinks {
+  display: none;
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .navLinks {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+}
+
+.navLinks a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--foreground);
+  opacity: 0.65;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.navLinks a:hover {
+  opacity: 1;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 2rem;
+  gap: 1rem;
+}
+
+.desktopContact {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktopContact {
+    display: block;
+  }
+}
+
+.contactBtn {
+  background-color: var(--primary, #1077d7);
+  color: #ffffff;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  opacity: 0;
+  animation: fadeIn 0.6s ease 1.5s forwards;
+}
+
+.contactBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(16, 119, 215, 0.35);
+  background-color: var(--primary-hover, #0d62b3);
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Mobile Menu Styles */
+.mobileMenuBtn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 110;
+  padding: 0;
+}
+
+.mobileMenuBtn span {
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--foreground);
+  transition: all 0.3s ease;
+  border-radius: 0;
+}
+
+.mobileMenuBtn.menuOpen span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.mobileMenuBtn.menuOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobileMenuBtn.menuOpen span:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+@media (min-width: 768px) {
+  .mobileMenuBtn {
+    display: none;
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100dvh;
+  background: #f2f2f2; /* Off-white matching reference */
+  display: flex;
+  flex-direction: column;
+  z-index: 105;
+  transform: translateY(-100%);
+  transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  padding: 8rem 2rem 4rem; /* Top padding clears the close button */
+}
+
+.mobileMenu.mobileMenuOpen {
+  transform: translateY(0);
+}
+
+.mobileMenuContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.mobileNavLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  margin-top: 2rem; /* Move down slightly */
+}
+
+.mobileNavLinks a {
+  font-size: clamp(2.5rem, 11vw, 3.5rem);
+  font-weight: 400; /* Regular thin look */
+  letter-spacing: -0.04em;
+  color: var(--foreground);
+  text-transform: uppercase;
+  transition: opacity 0.2s ease;
+  line-height: 1.1;
+}
+
+.mobileNavLinks a:hover {
+  opacity: 0.7;
+}
+
+.mobileNavLinkGray {
+  color: #a0a0a0 !important;
+}
+
+.mobileSocials {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+}
+
+.socialsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.socialsList a {
+  color: var(--foreground);
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.socialsList a:hover {
+  opacity: 0.6;
+}

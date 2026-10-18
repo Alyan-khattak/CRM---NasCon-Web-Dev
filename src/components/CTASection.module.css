@@ -1,0 +1,300 @@
+.section {
+  position: relative;
+  min-height: 85vh;
+  width: 100%;
+  background-color: var(--charcoal-1, #181818);
+  color: #ffffff;
+  padding: 6rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1100px;
+  width: 100%;
+  gap: 2rem;
+}
+
+/* Status indicator badge */
+.statusBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.5s ease;
+}
+
+.statusPulseWrapper {
+  position: relative;
+  display: flex;
+  width: 8px;
+  height: 8px;
+}
+
+.statusPing {
+  position: absolute;
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background-color: var(--secondary, #5cc83a);
+  opacity: 0.75;
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.statusDot {
+  position: relative;
+  display: inline-flex;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: var(--secondary, #5cc83a);
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.statusText {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Interactive Center Group */
+.interactiveGroup {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.headingFlex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.mainHeading {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  text-align: center;
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  line-height: 1.08;
+}
+
+.overflowHide {
+  display: block;
+  overflow: hidden;
+}
+
+.translateSpan {
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mutedWord {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.circleBtnContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  margin-top: 1rem;
+}
+
+.circleBg {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+  transition: all 0.5s ease-out;
+}
+
+.circleArrowIcon {
+  width: 26px;
+  height: 26px;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+
+/* Side Dash Lines */
+.leftDashWrapper {
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.rightDashWrapper {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.dashLine {
+  height: 1px;
+  width: 48px;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: all 0.5s ease;
+}
+
+/* Footer / Subtext */
+.footerGroup {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+
+.description {
+  max-width: 580px;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 300;
+}
+
+.bottomLink {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+}
+
+.bottomLink:hover {
+  color: var(--primary, #1077d7);
+  letter-spacing: 0.22em;
+}
+
+/* Success View */
+.successView {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.successHeadingGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.successBadge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--primary, #1077d7);
+  transition: all 0.5s ease;
+}
+
+.successTitle {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  transition: all 0.5s ease;
+}
+
+.bookCallButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.lineLeft, .lineRight {
+  height: 1px;
+  width: 48px;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: all 0.5s ease;
+}
+
+.bookCallInner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  overflow: hidden;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.85rem 2rem;
+  transition: all 0.5s ease;
+}
+
+.bookCallIcon {
+  width: 20px;
+  height: 20px;
+  transition: all 0.5s ease;
+}
+
+.bookCallText {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all 0.5s ease;
+}
+
+.subtextCall {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 0.5s ease;
+}
+
+@media (max-width: 768px) {
+  .leftDashWrapper, .rightDashWrapper {
+    display: none;
+  }
+  .lineLeft, .lineRight {
+    width: 24px;
+  }
+  .circleBtnContainer {
+    width: 64px;
+    height: 64px;
+  }
+  .circleArrowIcon {
+    width: 22px;
+    height: 22px;
+  }
+}

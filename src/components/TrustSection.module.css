@@ -1,0 +1,152 @@
+.scrollSection {
+  height: 150vh;
+  position: relative;
+  background-color: var(--charcoal-1, #181818);
+  width: 100vw;
+  z-index: 1;
+}
+
+.stickyContainer {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.cardContainer {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  will-change: width;
+}
+
+.cardContainer:first-child {
+  border-left: none;
+}
+
+.backgroundWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.backgroundImage {
+  object-fit: cover;
+  /* Opacity removed to keep image natural, overlay does the darkening */
+}
+
+.evenOverlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3); /* 0.3 opacity black overlay exactly as requested */
+}
+
+.sectionContent {
+  position: relative;
+  z-index: 1;
+  min-width: 60vw; /* Keeps text stable while sliding */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 6rem;
+  color: #fff;
+}
+
+.card2Inner {
+  position: relative;
+  z-index: 1;
+  min-width: 40vw; /* Keeps text stable while sliding */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 4rem;
+  color: #fff;
+}
+
+.title {
+  font-size: 5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  max-width: 800px;
+}
+
+.description {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 800px;
+}
+
+.titleSmall {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.descriptionSmall {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+@media (max-width: 1024px) {
+  .sectionContent {
+    padding: 0 4rem;
+    min-width: 60vw;
+  }
+  .card2Inner {
+    padding: 0 3rem;
+    min-width: 40vw;
+  }
+  .title {
+    font-size: 3.5rem;
+  }
+  .titleSmall {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionContent {
+    padding: 0 2rem;
+    min-width: 100vw;
+  }
+  .card2Inner {
+    padding: 0 1.5rem;
+    min-width: 100vw;
+  }
+  .title {
+    font-size: 2.5rem;
+  }
+  .description {
+    font-size: 1.1rem;
+  }
+  .titleSmall {
+    font-size: 2rem;
+  }
+  
+  /* Stack vertically on very small screens since 30vw is too thin */
+  .stickyContainer {
+    flex-direction: column;
+  }
+  .cardContainer {
+    width: 100% !important;
+    height: 50vh !important;
+  }
+  .sectionContent, .card2Inner {
+    height: 50vh;
+    min-width: 100vw;
+    justify-content: center;
+  }
+}
