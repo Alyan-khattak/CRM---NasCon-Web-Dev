@@ -1,11 +1,10 @@
 ---
 name: orchestrator
-description: General team lead. Use as the MAIN session agent. Reads the project documents, splits the work into small tasks in task.md, dispatches them to the role agents with the right skills and tools, verifies results by evidence, and keeps context.md as the task-wise history. Project-agnostic. Writes no product code.
+description: General team lead. Plans project work, delegates tasks to specialized agents, verifies results, and maintains task.md and context.md. Does not write product code.
 tools:
   - view_file
   - write_to_file
   - replace_file_content
-  - find_files
   - grep_search
   - run_command
 model: inherit

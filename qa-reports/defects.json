@@ -1,0 +1,46 @@
+[
+  {
+    "defect_id": "DEF-001",
+    "title": "Passlib bcrypt 5.x 72-byte value error on authentication",
+    "severity": "CRITICAL",
+    "priority": "P0",
+    "affected_requirements": ["F1.1", "Q1"],
+    "root_cause": "bcrypt 5.0.0 removed __about__.__version__ and enforced hard 72-byte limit during passlib wrap-bug detection.",
+    "fix_description": "Pinned bcrypt==3.2.2 in crm-backend/requirements.txt.",
+    "status": "RESOLVED",
+    "retest_status": "PASS"
+  },
+  {
+    "defect_id": "DEF-002",
+    "title": "MissingGreenlet exception during Pipeline stages serialization",
+    "severity": "HIGH",
+    "priority": "P1",
+    "affected_requirements": ["F2.5", "F2.7", "Q14"],
+    "root_cause": "Pipeline.stages relationship was lazily loaded by default, causing MissingGreenlet when Pydantic serialized stages in async context.",
+    "fix_description": "Added lazy='selectin' to Pipeline.stages in orm.py and selectinload(Pipeline.stages) in pipelines.py.",
+    "status": "RESOLVED",
+    "retest_status": "PASS"
+  },
+  {
+    "defect_id": "DEF-003",
+    "title": "ResponseValidationError on AuditLog query due to primary key mismatch",
+    "severity": "HIGH",
+    "priority": "P1",
+    "affected_requirements": ["F4.1", "F4.2"],
+    "root_cause": "AuditLogResponse schema specified audit_log_id while ORM model defines log_id.",
+    "fix_description": "Updated AuditLogResponse in crm-backend/app/routers/audit.py to use log_id.",
+    "status": "RESOLVED",
+    "retest_status": "PASS"
+  },
+  {
+    "defect_id": "DEF-004",
+    "title": "Race condition on simultaneous lead creation causing UNIQUE constraint crash",
+    "severity": "HIGH",
+    "priority": "P1",
+    "affected_requirements": ["F3.1", "F3.8", "Q5"],
+    "root_cause": "_seed_lookups was executed concurrently across simultaneous requests without mutual exclusion locking.",
+    "fix_description": "Added asyncio.Lock() protection to _seed_lookups in crm-backend/app/routers/leads.py.",
+    "status": "RESOLVED",
+    "retest_status": "PASS"
+  }
+]

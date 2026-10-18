@@ -1,0 +1,28 @@
+{
+  "total_statements": 2654,
+  "covered_statements": 2006,
+  "missed_statements": 648,
+  "coverage_percentage": 75.58,
+  "route_coverage": 100.0,
+  "requirement_coverage": 100.0,
+  "modules": {
+    "app.models.orm": 100.0,
+    "app.models.schemas": 100.0,
+    "app.middleware.audit": 100.0,
+    "app.middleware.rate_limit": 100.0,
+    "app.main": 91.0,
+    "app.routers.audit": 87.0,
+    "app.auth.jwt": 85.0,
+    "app.auth.dependencies": 83.0,
+    "app.routers.webhooks": 83.0,
+    "app.routers.saved_filters": 72.0,
+    "app.routers.payments": 71.0,
+    "app.routers.calls": 69.0,
+    "app.routers.companies": 57.0,
+    "app.routers.contacts": 55.0,
+    "app.routers.pipelines": 49.0,
+    "app.routers.leads": 48.0,
+    "app.routers.opportunities": 43.0,
+    "app.routers.workspaces": 42.0
+  }
+}

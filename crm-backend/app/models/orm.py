@@ -236,7 +236,10 @@ class Pipeline(Base):
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 
     stages: Mapped[list["PipelineStage"]] = relationship(
-        "PipelineStage", back_populates="pipeline", order_by="PipelineStage.sort_order"
+        "PipelineStage",
+        back_populates="pipeline",
+        order_by="PipelineStage.sort_order",
+        lazy="selectin",
     )
     opportunities: Mapped[list["Opportunity"]] = relationship("Opportunity", back_populates="pipeline")
     custom_fields: Mapped[list["CustomFieldDefinition"]] = relationship(

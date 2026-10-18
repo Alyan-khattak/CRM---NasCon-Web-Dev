@@ -9,6 +9,7 @@ F2.4: stage_required_fields gates opportunity stage moves.
 from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import selectinload
 
 from app.auth.dependencies import CurrentUser, admin_or_above, get_current_user
 from app.database import get_db
@@ -48,7 +49,9 @@ async def list_pipelines(
     db: AsyncSession = Depends(get_db),
 ):
     result = await db.execute(
-        select(Pipeline).where(Pipeline.workspace_id == current_user.workspace_id)
+        select(Pipeline)
+        .options(selectinload(Pipeline.stages))
+        .where(Pipeline.workspace_id == current_user.workspace_id)
     )
     return result.scalars().all()
 
@@ -76,8 +79,7 @@ async def create_pipeline(
         after_value={"pipeline_name": body.pipeline_name},
     )
     await db.commit()
-    await db.refresh(pipeline)
-    return pipeline
+    return await _get_pipeline(db, pipeline.pipeline_id, current_user.workspace_id)
 
 
 @router.patch("/{pipeline_id}", response_model=PipelineResponse)
@@ -93,8 +95,7 @@ async def update_pipeline(
     for field, value in body.model_dump(exclude_none=True).items():
         setattr(pipeline, field, value)
     await db.commit()
-    await db.refresh(pipeline)
-    return pipeline
+    return await _get_pipeline(db, pipeline_id, current_user.workspace_id)
 
 
 # ── Stages ────────────────────────────────────────────────────────────────────
@@ -271,7 +272,9 @@ async def set_stage_required_field(
 
 async def _get_pipeline(db: AsyncSession, pipeline_id: int, workspace_id: int) -> Pipeline:
     result = await db.execute(
-        select(Pipeline).where(
+        select(Pipeline)
+        .options(selectinload(Pipeline.stages))
+        .where(
             Pipeline.pipeline_id == pipeline_id,
             Pipeline.workspace_id == workspace_id,
         )

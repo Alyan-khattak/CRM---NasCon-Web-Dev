@@ -3,19 +3,19 @@ import Navbar from "@/components/Navbar";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Olema | Agentic AI Done For You",
-  description: "Stop firefighting and start scaling with Olema. We build AI agents that handle leads, tickets, and orders from day one. No tech skills needed.",
+  title: "Financify — Connected Customer & Business Operations",
+  description: "Bring leads, customer conversations, sales pipelines, appointments, and payment activity together in one connected business workspace with Financify.",
   openGraph: {
-    title: "Olema | Agentic AI Done For You",
-    description: "Stop firefighting and start scaling with Olema. We build AI agents that handle leads, tickets, and orders from day one.",
-    url: "https://olema.com",
-    siteName: "Olema",
+    title: "Financify — Connected Customer & Business Operations",
+    description: "Bring leads, customer conversations, sales pipelines, appointments, and payment activity together in one connected business workspace with Financify.",
+    url: "https://financify.si",
+    siteName: "Financify",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Olema | Agentic AI Done For You",
-    description: "Stop firefighting and start scaling with Olema. We build AI agents that handle leads, tickets, and orders from day one.",
+    title: "Financify — Connected Customer & Business Operations",
+    description: "Bring leads, customer conversations, sales pipelines, appointments, and payment activity together in one connected business workspace with Financify.",
   }
 };
 

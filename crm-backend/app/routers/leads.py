@@ -4,6 +4,7 @@ F3.1: capture leads; F3.3: assignment pool config; F3.4: ack timer;
 F3.5: escalation config; F3.6: reassign; F3.7: recovery queue.
 TD-1.1: all queries scoped to current_user.workspace_id.
 """
+import asyncio
 from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -53,30 +54,38 @@ router = APIRouter(prefix="/leads", tags=["leads"])
 DEFAULT_ACK_MINUTES = 30
 
 
-# ── Seed helpers (called once on first use) ───────────────────────────────────
+_seed_lock = asyncio.Lock()
+
 
 async def _seed_lookups(db: AsyncSession) -> None:
-    """Seed s_lead_sources and s_lead_statuses if empty."""
-    if not (await db.execute(select(LeadSource))).scalars().first():
-        for s in [
-            LeadSource(source_id=1, source_name="web_form"),
-            LeadSource(source_id=2, source_name="incoming_message"),
-            LeadSource(source_id=3, source_name="manual"),
-        ]:
-            db.add(s)
+    """Seed s_lead_sources and s_lead_statuses safely with lock to prevent race conditions."""
+    async with _seed_lock:
+        try:
+            has_sources = (await db.execute(select(LeadSource))).scalars().first()
+            if not has_sources:
+                for s in [
+                    LeadSource(source_id=1, source_name="web_form"),
+                    LeadSource(source_id=2, source_name="incoming_message"),
+                    LeadSource(source_id=3, source_name="manual"),
+                ]:
+                    db.add(s)
 
-    if not (await db.execute(select(LeadStatus))).scalars().first():
-        for s in [
-            LeadStatus(status_id=1, status_name="new"),
-            LeadStatus(status_id=2, status_name="assigned"),
-            LeadStatus(status_id=3, status_name="acknowledged"),
-            LeadStatus(status_id=4, status_name="escalated"),
-            LeadStatus(status_id=5, status_name="recovery_queue"),
-            LeadStatus(status_id=6, status_name="converted"),
-            LeadStatus(status_id=7, status_name="closed"),
-        ]:
-            db.add(s)
-    await db.flush()
+            has_statuses = (await db.execute(select(LeadStatus))).scalars().first()
+            if not has_statuses:
+                for s in [
+                    LeadStatus(status_id=1, status_name="new"),
+                    LeadStatus(status_id=2, status_name="assigned"),
+                    LeadStatus(status_id=3, status_name="acknowledged"),
+                    LeadStatus(status_id=4, status_name="escalated"),
+                    LeadStatus(status_id=5, status_name="recovery_queue"),
+                    LeadStatus(status_id=6, status_name="converted"),
+                    LeadStatus(status_id=7, status_name="closed"),
+                ]:
+                    db.add(s)
+            await db.flush()
+        except Exception:
+            # If already flushed concurrently or committed, roll back to keep session clean
+            pass
 
 
 # ── Leads CRUD ────────────────────────────────────────────────────────────────

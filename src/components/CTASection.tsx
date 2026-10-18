@@ -167,7 +167,7 @@ export default function CTASection() {
                     transform: isHovered && !isClicked ? "translateY(-8%)" : "translateY(0)",
                   }}
                 >
-                  Let&apos;s Find Out
+                  See where work
                 </span>
               </span>
               <span className={styles.overflowHide}>
@@ -178,7 +178,7 @@ export default function CTASection() {
                     transform: isHovered && !isClicked ? "translateY(-8%)" : "translateY(0)",
                   }}
                 >
-                  <span className={styles.mutedWord}>What&apos;s Costing You</span>
+                  <span className={styles.mutedWord}>gets stuck</span>
                 </span>
               </span>
             </h2>
@@ -246,7 +246,7 @@ export default function CTASection() {
           }}
         >
           <p className={styles.description}>
-            No pitch deck. No pressure. Just a free 30-minute conversation where we show you, specifically, what&apos;s slowing your business down — and what it would look like fixed.
+            Bring your lead flow, customer conversations, follow-ups, and appointments into one clearer view.
           </p>
         </motion.div>
 

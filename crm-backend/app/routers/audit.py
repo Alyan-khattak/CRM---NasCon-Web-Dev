@@ -21,7 +21,7 @@ router = APIRouter(prefix="/audit", tags=["audit"])
 
 
 class AuditLogResponse(BaseModel):
-    audit_log_id: int
+    log_id: int
     workspace_id: int
     event_type: str
     actor_id: Optional[int]

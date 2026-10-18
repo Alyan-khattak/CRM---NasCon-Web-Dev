@@ -1,4 +1,4 @@
-import styles from "./ProblemSection.module.css";
+﻿import styles from "./ProblemSection.module.css";
 import InboxCard from "./InboxCard";
 
 const fakeChats = Array.from({ length: 30 }).map((_, i) => {
@@ -16,16 +16,16 @@ export default function ProblemSection() {
     <section className={styles.problemSection} id="problem">
       <div className={styles.container}>
         <div className={styles.header}>
-          <span className={styles.eyebrow}>• THE PROBLEM</span>
+          <span className={styles.eyebrow}>â€¢ THE PROBLEM</span>
           <h2 className={styles.title}>
-            You&apos;re not failing. <em>Your systems are.</em>
+            Your team isn&apos;t the problem. <em>Disconnected work is.</em>
           </h2>
           <p className={styles.description}>
-            You didn&apos;t build this business to spend your nights untangling WhatsApp threads. 
-            Or watching your best salesperson do data entry an intern could do. 
-            That 2 AM lead who never got a reply? That&apos;s not bad luck — it&apos;s a broken system quietly costing you money every single day you don&apos;t fix it.
+            A lead arrives. Someone needs to respond. But the right person is busy, a message lives in another app, or nobody knows who owns the next step.
             <br /><br />
-            Here&apos;s what that&apos;s really costing you right now:
+            Meanwhile, customer details, conversations, appointments, and payment updates sit in different places. Your team spends time chasing context instead of moving work forward.
+            <br /><br />
+            Financify brings the work together â€” and makes responsibility visible.
           </p>
         </div>
 
@@ -34,9 +34,9 @@ export default function ProblemSection() {
           <div className={styles.card}>
             <InboxCard fakeChats={fakeChats} />
             <div className={styles.cardContent}>
-              <h3 className={styles.cardTitle}>You&apos;re losing 73% of your leads</h3>
+              <h3 className={styles.cardTitle}>Every lead needs a clear owner.</h3>
               <p className={styles.cardText}>
-                ...in the first hour alone — because nobody replied fast enough. Olema replies in milliseconds, every time, so every dollar you spend on ads actually pays off.
+                When assignments and follow-ups are informal, a promising enquiry can wait unnoticed. Give each lead an accountable human owner, with acknowledgement windows and escalation when action is overdue.
               </p>
             </div>
           </div>
@@ -54,7 +54,7 @@ export default function ProblemSection() {
                 </svg>
               </div>
 
-              {/* Window A - Salesforce */}
+              {/* Window A - Conversations */}
               <div className={`${styles.windowApp} ${styles.windowLeft}`}>
                 <div className={styles.winHeader}>
                   <div className={styles.winDots}>
@@ -62,7 +62,7 @@ export default function ProblemSection() {
                     <div className={styles.dotYellow}></div>
                     <div className={styles.dotGreen}></div>
                   </div>
-                  <div className={styles.winTitle}>Salesforce</div>
+                  <div className={styles.winTitle}>Conversations</div>
                 </div>
                 <div className={styles.winBody}>
                   <div className={`${styles.winSkeleton} ${styles.winSkeletonHighlight}`}></div>
@@ -71,7 +71,7 @@ export default function ProblemSection() {
                 </div>
               </div>
 
-              {/* Window B - Zendesk */}
+              {/* Window B - Calendar */}
               <div className={`${styles.windowApp} ${styles.windowRight}`}>
                 <div className={styles.winHeader}>
                   <div className={styles.winDots}>
@@ -79,7 +79,7 @@ export default function ProblemSection() {
                     <div className={styles.dotYellow}></div>
                     <div className={styles.dotGreen}></div>
                   </div>
-                  <div className={styles.winTitle}>Zendesk</div>
+                  <div className={styles.winTitle}>Calendar</div>
                 </div>
                 <div className={styles.winBody}>
                   <div className={styles.winSkeleton}></div>
@@ -89,9 +89,9 @@ export default function ProblemSection() {
               </div>
             </div>
             <div className={styles.cardContent}>
-              <h3 className={styles.cardTitle}>You could get back 2,400+ hours a year</h3>
+              <h3 className={styles.cardTitle}>Stop piecing together the story.</h3>
               <p className={styles.cardText}>
-                That&apos;s what mid-market teams reclaim once Olema takes the busywork off their plate.
+                Customer conversations, opportunities, appointments, and payment updates belong in the same context. Give your team a clearer view of the relationship without relying on scattered records.
               </p>
             </div>
           </div>
@@ -100,18 +100,18 @@ export default function ProblemSection() {
           <div className={styles.card}>
             <div className={`${styles.cardVisual} ${styles.cardVisualSync}`}>
               
-              {/* Stripe Box */}
+              {/* Pipeline Box */}
               <div className={styles.syncBoxLeft}>
-                <div className={styles.syncBoxHeader}>Stripe</div>
+                <div className={styles.syncBoxHeader}>Dashboard</div>
                 <div className={styles.syncBoxStatus}>Live</div>
               </div>
 
-              {/* Quickbooks Box */}
+              {/* Activity Box */}
               <div className={styles.syncBoxRight}>
-                <div className={styles.syncBoxHeader}>Quickbooks</div>
+                <div className={styles.syncBoxHeader}>Activity</div>
                 <div className={styles.syncBoxStatusContainer}>
-                  <span className={styles.statusSyncing}>Syncing</span>
-                  <span className={styles.statusFailed}>Failed</span>
+                  <span className={styles.statusSyncing}>On Track</span>
+                  <span className={styles.statusFailed}>Overdue</span>
                 </div>
               </div>
 
@@ -125,9 +125,9 @@ export default function ProblemSection() {
 
             </div>
             <div className={styles.cardContent}>
-              <h3 className={styles.cardTitle}>You could cut data errors by 99.2%</h3>
+              <h3 className={styles.cardTitle}>Know what needs attention.</h3>
               <p className={styles.cardText}>
-                No more chasing down a wrong order because someone mistyped a number at 6 PM on a Friday.
+                See overdue leads, escalations, employee availability, and pipeline activity in one operational view. Make the next action easier to identify.
               </p>
             </div>
           </div>

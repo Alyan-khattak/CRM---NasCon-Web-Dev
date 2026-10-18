@@ -14,33 +14,33 @@ interface FAQItem {
 const faqs: FAQItem[] = [
   {
     id: "faq-1",
-    question: "Will this replace my staff?",
+    question: "Will Financify replace my team?",
     answer:
-      "No. Your agent takes the repetitive, mind-numbing work off their plate — the data entry, the follow-ups, the copy-pasting — so your team can spend their time on the work that actually needs a human. It's built to make your people faster, not to make them unnecessary.",
+      "No. Financify is designed to support the people handling your customers, not replace their responsibility. It helps organize lead ownership, customer context, and follow-up workflows. Conversational AI can support conversations and offer recommendations, while human accountability remains in place.",
   },
   {
     id: "faq-2",
-    question: "What happens to my data if I cancel?",
+    question: "What happens to our company data?",
     answer:
-      "It's handed back to you, and then deleted from our systems. Nothing lingers, nothing gets reused. Your data was never ours to keep.",
+      "Each company operates in its own workspace, with access controlled by permissions. Data access is intended to remain separated between workspaces. Ask us about the current implementation, data handling, and any applicable retention or deletion policies before onboarding.",
   },
   {
     id: "faq-3",
-    question: "What if the agent gets something wrong?",
+    question: "What if the AI gets something wrong?",
     answer:
-      "If it hits a situation it's not confident about, it hands the conversation straight to a human on your team — instantly, with full context. Our team also reviews what happened and retrains the agent within 24 hours, so the same mistake doesn't happen twice.",
+      "Conversational AI is limited to conversation and recommendations. It does not independently take ownership of a lead or perform lead-management actions. A designated human remains accountable, and the team continues to manage the underlying workflow.",
   },
   {
     id: "faq-4",
-    question: "Is support really available 24/7?",
+    question: "Can Financify connect to our existing tools?",
     answer:
-      "Yes. Whenever you need us, someone's there — not just during business hours.",
+      "Financify is designed around connected customer workflows, including messaging, payments, and calendar activity. Available connections depend on the supported provider, account setup, and current integration status. We can clarify which connections are available for your intended workflow.",
   },
   {
     id: "faq-5",
-    question: "Do I have to sign a contract?",
+    question: "Is Financify suitable for a small team?",
     answer:
-      "After your free 7-day trial, yes — but you'll have already seen exactly what the agent does for your business before you commit to anything.",
+      "Yes. The platform is intended for small and growing service businesses that need clearer lead ownership, connected customer records, and better visibility into day-to-day operations. The right configuration depends on how your team handles leads and customers.",
   },
 ];
 
@@ -64,10 +64,10 @@ export default function FAQSection() {
         >
           <span className={styles.eyebrow}>• FREQUENTLY ASKED QUESTIONS</span>
           <h2 className={styles.title}>
-            Real questions. <em>Straight answers.</em>
+            Real questions. <em>Clear answers.</em>
           </h2>
           <p className={styles.subtitle}>
-            Everything you need to know about how Olema agents work, security, and onboarding.
+            Understand how Financify brings customer work together, supports your team, and keeps responsibility visible.
           </p>
         </motion.div>
 
@@ -121,4 +121,3 @@ export default function FAQSection() {
     </section>
   );
 }
-

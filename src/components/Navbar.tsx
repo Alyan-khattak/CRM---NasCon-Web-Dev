@@ -23,12 +23,12 @@ export default function Navbar() {
         <div className={styles.container}>
           <div className={styles.logoContainer}>
             <Link href="/" className={styles.logoText}>
-              Olema
+              Financify
             </Link>
           </div>
           
           <nav className={styles.navLinks}>
-            <Link href="#agents">Agents</Link>
+            <Link href="#agents">Platform</Link>
             <Link href="#how-it-works">How It Works</Link>
             <Link href="#security">Security</Link>
             <Link href="#faqs">FAQs</Link>
@@ -37,7 +37,7 @@ export default function Navbar() {
           <div className={styles.actions}>
             <div className={styles.desktopContact}>
               <Link href="#contact" className={styles.contactBtn}>
-                Contact Us
+                Book a Walkthrough
               </Link>
             </div>
             <button 
@@ -57,7 +57,7 @@ export default function Navbar() {
         <div className={styles.mobileMenuContent}>
           <nav className={styles.mobileNavLinks}>
             <Link href="/" className={styles.mobileNavLinkGray} onClick={() => setIsMobileMenuOpen(false)}>HOME</Link>
-            <Link href="#agents" onClick={() => setIsMobileMenuOpen(false)}>AGENTS</Link>
+            <Link href="#agents" onClick={() => setIsMobileMenuOpen(false)}>PLATFORM</Link>
             <Link href="#how-it-works" onClick={() => setIsMobileMenuOpen(false)}>HOW IT WORKS</Link>
             <Link href="#security" onClick={() => setIsMobileMenuOpen(false)}>SECURITY</Link>
             <Link href="#faqs" onClick={() => setIsMobileMenuOpen(false)}>FAQS</Link>
