@@ -13,7 +13,7 @@ from slowapi.middleware import SlowAPIMiddleware
 
 from app.database import create_tables
 from app.middleware.rate_limit import limiter
-from app.routers import auth, workspaces, contacts, companies, pipelines, opportunities, saved_filters, leads, calls, payments, webhooks, audit
+from app.routers import auth, workspaces, contacts, companies, pipelines, opportunities, saved_filters, leads, calls, payments, webhooks, audit, platform
 
 
 @asynccontextmanager
@@ -65,3 +65,6 @@ app.include_router(webhooks.router)
 
 # Phase 5
 app.include_router(audit.router)
+
+# Platform Admin (Option A)
+app.include_router(platform.router)

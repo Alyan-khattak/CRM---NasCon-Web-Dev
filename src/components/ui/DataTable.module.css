@@ -1,0 +1,139 @@
+.card {
+  background: #fff;
+  border: 1px solid var(--border-color, #e4e4e7);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table :global(thead tr) {
+  background: var(--accent-sky, #f4f4f5);
+  border-bottom: 1px solid var(--border-color, #e4e4e7);
+}
+
+.table :global(thead th) {
+  padding: 0.7rem 1rem;
+  text-align: left;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--charcoal-2, #65717c);
+}
+
+.table :global(tbody tr) {
+  border-bottom: 1px solid var(--border-color, #e4e4e7);
+  transition: background 0.1s;
+}
+
+.table :global(tbody tr:last-child) {
+  border-bottom: none;
+}
+
+.table :global(tbody tr:hover) {
+  background: var(--accent-ice, #f8f8f8);
+}
+
+.table :global(tbody td) {
+  padding: 0.8rem 1rem;
+  font-size: 0.875rem;
+  color: var(--foreground, #181818);
+}
+
+.empty {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--charcoal-2, #65717c);
+  font-size: 0.9rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+}
+
+.badgeGreen  { background: #dcfce7; color: #15803d; }
+.badgeYellow { background: #fef9c3; color: #a16207; }
+.badgeRed    { background: #fee2e2; color: #b91c1c; }
+.badgeBlue   { background: #dbeafe; color: #1d4ed8; }
+.badgeGray   { background: var(--accent-sky,#f4f4f5); color: var(--charcoal-2,#65717c); }
+
+.actionBtn {
+  background: var(--foreground, #181818);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.actionBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.linkBtn {
+  background: transparent;
+  border: 1px solid var(--border-color, #e4e4e7);
+  border-radius: 7px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--foreground, #181818);
+  transition: all 0.15s;
+}
+
+.linkBtn:hover {
+  background: var(--accent-sky, #f4f4f5);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.statCard {
+  background: #fff;
+  border: 1px solid var(--border-color, #e4e4e7);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+}
+
+.statLabel {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--charcoal-2, #65717c);
+  margin-bottom: 0.4rem;
+}
+
+.statValue {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--foreground, #181818);
+}

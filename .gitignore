@@ -28,6 +28,7 @@ __pycache__/
 .coverage
 
 # Next.js / frontend
+.next/
 /build
 .DS_Store
 *.pem
