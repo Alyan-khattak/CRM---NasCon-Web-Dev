@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { api, setToken } from "@/lib/api";
+import { api, setToken, decodeJwt } from "@/lib/api";
 import styles from "@/components/ui/AuthCard.module.css";
 
 export default function LoginPage() {
@@ -17,13 +17,16 @@ export default function LoginPage() {
     setError("");
     setLoading(true);
     try {
-      const res = await api.post<{ access_token: string; workspace_name?: string }>(
+      const res = await api.post<{ access_token: string; refresh_token: string; expires_in: number }>(
         "/auth/login",
         form
       );
       setToken(res.access_token, "workspace");
-      if (res.workspace_name) localStorage.setItem("crm_workspace_name", res.workspace_name);
+      localStorage.setItem("crm_refresh_token", res.refresh_token);
       localStorage.setItem("crm_workspace_slug", form.workspace_slug);
+      const payload = decodeJwt(res.access_token);
+      if (payload.role) localStorage.setItem("crm_role", String(payload.role));
+      if (payload.sub) localStorage.setItem("crm_user_id", String(payload.sub));
       router.push("/dashboard");
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Login failed");

@@ -8,7 +8,7 @@ from datetime import datetime
 from typing import Optional
 
 from fastapi import APIRouter, Depends, Request
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -21,7 +21,7 @@ router = APIRouter(prefix="/audit", tags=["audit"])
 
 
 class AuditLogResponse(BaseModel):
-    audit_log_id: int
+    audit_log_id: int = Field(validation_alias="log_id")
     workspace_id: int
     event_type: str
     actor_id: Optional[int]
@@ -33,7 +33,7 @@ class AuditLogResponse(BaseModel):
     occurred_at: datetime
     remarks: Optional[str]
 
-    model_config = {"from_attributes": True}
+    model_config = {"from_attributes": True, "populate_by_name": True}
 
 
 @router.get("", response_model=list[AuditLogResponse])

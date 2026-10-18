@@ -11,9 +11,9 @@ export default function SignupPage() {
   const [form, setForm] = useState({
     workspace_name: "",
     workspace_slug: "",
-    full_name: "",
+    owner_full_name: "",
     email: "",
-    password: "",
+    owner_password: "",
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -71,8 +71,8 @@ export default function SignupPage() {
           <input
             className={styles.input}
             placeholder="Ali Khan"
-            value={form.full_name}
-            onChange={e => setForm(f => ({ ...f, full_name: e.target.value }))}
+            value={form.owner_full_name}
+            onChange={e => setForm(f => ({ ...f, owner_full_name: e.target.value }))}
             required
           />
         </div>
@@ -93,8 +93,8 @@ export default function SignupPage() {
             className={styles.input}
             type="password"
             placeholder="min 8 characters"
-            value={form.password}
-            onChange={e => setForm(f => ({ ...f, password: e.target.value }))}
+            value={form.owner_password}
+            onChange={e => setForm(f => ({ ...f, owner_password: e.target.value }))}
             required
             minLength={8}
           />

@@ -11,10 +11,35 @@ export function setToken(token: string, type: "workspace" | "platform" = "worksp
 
 export function clearToken(type: "workspace" | "platform" = "workspace") {
   localStorage.removeItem(type === "platform" ? "platform_token" : "crm_token");
+  if (type === "workspace") {
+    localStorage.removeItem("crm_refresh_token");
+    localStorage.removeItem("crm_role");
+    localStorage.removeItem("crm_user_id");
+    localStorage.removeItem("crm_workspace_name");
+    localStorage.removeItem("crm_workspace_slug");
+  }
 }
 
 export function isLoggedIn(type: "workspace" | "platform" = "workspace"): boolean {
   return !!getToken(type);
+}
+
+export function decodeJwt(token: string): Record<string, unknown> {
+  try {
+    const b64 = token.split(".")[1].replace(/-/g, "+").replace(/_/g, "/");
+    return JSON.parse(atob(b64));
+  } catch { return {}; }
+}
+
+export function getRole(): number {
+  if (typeof window === "undefined") return 3;
+  return parseInt(localStorage.getItem("crm_role") ?? "3", 10);
+}
+
+export function getUserId(): number | null {
+  if (typeof window === "undefined") return null;
+  const v = localStorage.getItem("crm_user_id");
+  return v ? parseInt(v, 10) : null;
 }
 
 async function request<T>(

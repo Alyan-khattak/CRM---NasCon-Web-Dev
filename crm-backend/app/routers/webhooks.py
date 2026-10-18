@@ -1,8 +1,8 @@
 """
-Webhook receivers for Retell AI.
+Webhook receivers for Retell AI and Stripe.
 I1.8: store raw payload in integration_events before processing.
-Idempotency key = provider_event_id (retell_{event_type}_{call_id}).
-Signature verification per Retell docs.
+I2.3: Stripe signature verification.
+I2.4: idempotency via provider_event_id.
 """
 import hashlib
 import hmac
@@ -14,6 +14,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
 from app.services.retell_service import process_retell_webhook
+from app.services.payment_service import handle_stripe_webhook
 
 router = APIRouter(prefix="/webhooks", tags=["webhooks"])
 
@@ -58,3 +59,21 @@ async def retell_webhook(
     await db.commit()
 
     return {"received": True, "processed": is_new}
+
+
+@router.post("/stripe")
+async def stripe_webhook(
+    request: Request,
+    db: AsyncSession = Depends(get_db),
+    stripe_signature: str = Header(default="", alias="stripe-signature"),
+):
+    """
+    I2.3: Stripe webhook — signature verified before any DB write.
+    I2.4: idempotency via integration_events.provider_event_id = Stripe event id.
+    Handles: checkout.session.completed, checkout.session.expired,
+             charge.refunded, payment_intent.payment_failed.
+    """
+    raw_body = await request.body()
+    result = await handle_stripe_webhook(db, raw_body, stripe_signature)
+    await db.commit()
+    return result

@@ -26,10 +26,16 @@ class Settings(BaseSettings):
     RETELL_FROM_NUMBER: str = ""
     RETELL_WEBHOOK_SECRET: str = ""
 
-    # Simpaisa
-    SIMPAISA_API_KEY: str = ""
-    SIMPAISA_BASE_URL: str = "https://sandbox.simpaisa.com"
-    SIMPAISA_WEBHOOK_SECRET: str = ""
+    # Stripe
+    STRIPE_SECRET_KEY: str = ""
+    STRIPE_WEBHOOK_SECRET: str = ""
+    STRIPE_SUCCESS_URL: str = "http://localhost:3000/payments?session_id={CHECKOUT_SESSION_ID}&status=success"
+    STRIPE_CANCEL_URL: str = "http://localhost:3000/payments?status=cancelled"
+
+    # Google Calendar OAuth 2.0
+    GOOGLE_CLIENT_ID: str = ""
+    GOOGLE_CLIENT_SECRET: str = ""
+    GOOGLE_REDIRECT_URI: str = "http://localhost:8000/calendar/callback"
 
     # Rate limiting
     RATE_LIMIT_AUTH: str = "5/minute"
