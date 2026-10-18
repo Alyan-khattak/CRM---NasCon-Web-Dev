@@ -7,7 +7,7 @@ import styles from "./Footer.module.css";
 const words = ["SHOW", "ME", "WHAT'S", "POSSIBLE →"];
 
 const bottomLinks = [
-  { label: "AGENTS", href: "#agents", isExternal: false },
+  { label: "PLATFORM", href: "#agents", isExternal: false },
   { label: "ENTERPRISE", href: "#enterprise", isExternal: false },
   { label: "SECURITY & PRIVACY", href: "#security", isExternal: false },
   { label: "FAQS", href: "#faqs", isExternal: false },
@@ -74,7 +74,7 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Right Column: Olema Title aligned right of CTA */}
+          {/* Right Column: Financify Title aligned right of CTA */}
           <div className={styles.rightCol}>
             <div className={styles.brandBanner}>
               <motion.h2
@@ -84,7 +84,7 @@ export default function Footer() {
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
               >
-                Olema
+                Financify
               </motion.h2>
             </div>
           </div>
