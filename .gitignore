@@ -1,2 +1,22 @@
 .claude/journal
 .vscode/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Env
+.env
+*.env
+
+# DB
+*.db
+*.sqlite
+*.sqlite3
+
+# Test cache
+.pytest_cache/
+.coverage
