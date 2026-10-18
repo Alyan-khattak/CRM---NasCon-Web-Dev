@@ -45,3 +45,6 @@ next-env.d.ts
 .vscode/
 docs/
 >>>>>>> bc18ce9a3155b9ff0219601fc8ad58af4bfb133f
+.agents/*
+!.agents/agents/
+!.agents/agents/*.md
